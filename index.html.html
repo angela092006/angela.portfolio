@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angela Portfolio</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to top left, #ffffff, #dfc5c5);
+  height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+}
+
+
+.nav1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 100%;
+  background: #63201b;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 40px;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.3);
+}
+
+.nav1 li {
+  list-style: none;
+  margin: 10px 0;
+  color: #e8ded1;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.nav1 li:hover {
+  background: #d9a8a8;
+  color: #63201b;
+}
+
+.nav1 li.active {
+  background: #e8ded1;
+  color: #63201b;
+  font-weight: bold;
+}
+
+
+.main-content {
+  margin-left: 180px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+
+.section {
+  display: none;
+  width: 100%;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 60px 40px 40px 40px;
+}
+
+.section.active {
+  display: flex;
+}
+
+
+#home.section {
+  overflow-y: auto;
+}
+
+
+.home-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+  min-height: 70vh; 
+}
+
+.home-content img {
+  width: 350px;
+  border-radius: 10%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.home-text {
+  max-width: 600px;
+  text-align: left;
+}
+
+.home-text h1 {
+  font-size: 55px;
+  margin-bottom: 20px;
+  color: #63201b;
+}
+
+.home-text p {
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+
+.paragraph-cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin-bottom: 80px;
+}
+
+.card {
+  background: linear-gradient(135deg, #fff7f0, #ffe0e0);
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.8;
+  flex: 1 1 450px; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+}
+
+
+footer {
+  background: #3b1d1d; 
+  text-align: center;
+  padding: 20px;
+  width: 100%; 
+  position: static; 
+  margin-top: auto;
+  color: #d9a8a8;
+}
+
+footer a {
+  color: #d9a8a8;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffffff;
+}
+
+
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+  }
+  .nav1 {
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+  .nav1 li {
+    margin: 0 15px;
+  }
+  .home-content {
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
+  }
+  .home-text {
+    text-align: center;
+  }
+  .paragraph-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card {
+    flex: 1 1 90%;
+  }
+}
+
+#about.section {
+  overflow-y: auto !important;
+  padding: 100px 60px;
+}
+
+
+.about-wrap {
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px; 
+}
+
+
+.about-item {
+  width: 100%; 
+  background: linear-gradient(145deg, #ffffff, #f5e3e3);
+  padding: 25px 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+  
+  height: auto; 
+  text-align: left; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.about-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+
+.about-item h2 {
+  font-size: 30px;
+  color: #63201b;
+  margin-bottom: 10px;
+}
+
+
+.about-item p {
+  font-size: 20px;
+  line-height: 1.8;
+  color: #333;
+}
+
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  width: 100%;
+  margin-top: 40px;
+  justify-items: center;
+}
+
+.project-item {
+  background: linear-gradient(135deg, #fff7f0, #ffe0e0);
+  padding: 40px 30px; 
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  font-size: 22px; /
+  width: 100%; 
+}
+
+.project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  padding: 10px 20px;
+  background: #63201b;
+  color: #e8ded1;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10;
+  margin-left: 200px;
+  margin-top: 40px;
+}
+
+.back-btn:hover {
+  background: #d9a8a8;
+  color: #63201b;
+}
+
+
+@media (max-width: 768px) {
+  .projects-list {
+    grid-template-columns: 1fr;
+  }
+  .project-item {
+    font-size: 20px;
+    padding: 30px 20px;
+  }
+  .back-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+.labimage {
+  width: 200px;       
+  max-width: 90%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.labimage.enlarged {
+  transform: scale(2);  
+  z-index: 100;
+  position: relative;
+}
+
+.lab-images-row {
+  display: flex;           
+  justify-content: center; 
+  gap: 20px;               
+  flex-wrap: wrap;         
+  margin: 20px 0;
+}
+
+
+.lab-image-wrap {
+  text-align: center;
+}
+
+
+.lab-image {
+  width: 200px;               
+  max-width: 90%;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+}
+
+
+.lab-image.enlarged {
+  transform: scale(2);        
+  z-index: 100;
+  position: relative;
+}
+
+
+.lab-image-wrap p {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #63201b;
+}
+
+</style>
+</head>
+<body>
+
+
+<ul class="nav1">
+  <li class="active" onclick="showSection('home', this)">Home</li>
+  <li onclick="showSection('about', this)">About</li>
+  <li onclick="showSection('projects', this)">Projects</li>
+</ul>
+
+
+<div class="main-content">
+
+  
+  <div id="home" class="section active">
+    <div class="home-content">
+      <img src="../images/photo.jpg" alt="Angela's Photo">
+      <div class="home-text">
+        <h1>Hi, I'm Angela</h1>
+        <p>
+          I'm a first-year student pursuing Bachelor of Science in Information Technology (BSIT) at Pampanga State Agricultural University (PSAU).
+        </p>
+      </div>
+    </div>
+
+   
+    <div class="paragraph-cards">
+      <div class="card">
+        This portfolio shows the laboratory tasks I've completed in the WS101 course. So far, I've started learning basic HTML and Java, which I really enjoy and look forward to improving as I continue my IT journey.
+      </div>
+      <div class="card">
+        I'm eager to grow my software skills and gain more experience in IT, and I look forward to learning, experimenting, and exploring all the opportunities this field has to offer.
+      </div>
+    </div>
+  </div>
+
+  
+  <div id="about" class="section about-clean">
+
+    <div class="about-wrap">
+
+      <div class="about-item">
+        <h2>Name</h2>
+        <p>I'm Angela Nicole D. Almario (Gela for short) And I'm 18 years old.</p>
+      </div>
+
+      <div class="about-item">
+        <h2>Education</h2>
+        <p>Bachelor of Science in Information Technology, Pampanga State Agricultural University – <i>Currently studying</i></p>
+        <p>Magalang Christian Ecumenical School Incorporated, STEM Strand – <i>2023–2025</i> </p>
+      </div>
+
+      <div class="about-item">
+        <h2>Skills</h2>
+        <p>HTML • Java • Python • Figma</p>
+      </div>
+
+      <div class="about-item">
+        <h2>Goal</h2>
+        <p>My goal is to improve my website designs and create user-friendly, visually appealing websites.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="projects" class="section">
+    <h1>My Projects</h1>
+    <div class="projects-list">
+      <div class="project-item" onclick="showProject('lab1')">Midterm Lab Task 1. Resume Writing</div>
+      <div class="project-item" onclick="showProject('lab2')">Midterm Task 2. Nested List</div>
+      <div class="project-item" onclick="showProject('lab3')">Midterm Task 3. Image Maps</div>
+      <div class="project-item" onclick="showProject('lab4')">Midterm Task 4. HTML Forms</div>
+      <div class="project-item" onclick="showProject('lab5')">Midterm Lab Task 5. Applying CSS style</div>
+      <div class="project-item" onclick="showProject('lab6')">Midterm Task 6. Using CSS display property</div>
+    </div>
+  </div>
+
+ 
+
+
+ <div id="lab1" class="section">
+  <h1>Midterm Lab Task 1. Resume Writing</h1>
+  <p>Resume Writing using HTML</p>
+
+  <div class="lab-images-row">
+    <div class="lab-image-wrap">
+      <img src="../images/resumess.png" class="lab-image">
+      <p>Sample Code</p>
+    </div>
+    <div class="lab-image-wrap">
+      <img src="../images/resumeoutputss.png" class="lab-image">
+      <p>Sample Output</p>
+    </div>
+  </div>
+
+  <button class="back-btn" onclick="backToProjects()">Back</button>
+</div>
+
+<div id="lab2" class="section">
+  <h1>Midterm Task 2. Nested List</h1>
+  <p>HTML document using Ordered and Unordered list.</p>
+
+  <div class="lab-images-row">
+    <div class="lab-image-wrap">
+      <img src="../images/listoutputss.png" class="lab-image">
+      <p>Sample Output</p>
+    </div>
+    <div class="lab-image-wrap">
+      <img src="../images/listss.png" class="lab-image">
+      <p>Sample Code</p>
+    </div>
+  </div>
+
+  <button class="back-btn" onclick="backToProjects()">Back</button>
+</div>
+
+<div id="lab3" class="section">
+  <h1>Midterm Task 3. Image Maps</h1>
+  <p>Web navigation tool from an existing image using image maps.</p>
+
+  <div class="lab-images-row">
+    <div class="lab-image-wrap">
+      <img src="../images/mapcodess.png" class="lab-image">
+      <p>Sample Code</p>
+    </div>
+    <div class="lab-image-wrap">
+      <img src="../images/mapoutput.png" class="lab-image">
+      <p>Sample Output</p>
+    </div>
+  </div>
+
+  <button class="back-btn" onclick="backToProjects()">Back</button>
+</div>
+
+<div id="lab4" class="section">
+  <h1>Midterm Task 4. HTML Forms</h1>
+  <p>HTML Forms using the available HTML form elements</p>
+
+  <div class="lab-images-row">
+    <div class="lab-image-wrap">
+      <img src="../images/formscode.png" class="lab-image">
+      <p>Sample Code</p>
+    </div>
+    <div class="lab-image-wrap">
+      <img src="../images/formout.png" class="lab-image">
+      <p>Sample Output</p>
+    </div>
+  </div>
+
+  <button class="back-btn" onclick="backToProjects()">Back</button>
+</div>
+
+<div id="lab5" class="section">
+  <h1>Midterm Lab Task 5. Applying CSS style</h1>
+  <p>Using Inline and Internal CSS on resume</p>
+
+  <div class="lab-images-row">
+    <div class="lab-image-wrap">
+      <img src="../images/cssss.png" class="lab-image">
+      <p>Sample Code</p>
+    </div>
+    <div class="lab-image-wrap">
+      <img src="../images/resumecss.png" class="lab-image">
+      <p>Sample Output</p>
+    </div>
+  </div>
+
+  <button class="back-btn" onclick="backToProjects()">Back</button>
+</div>
+
+<div id="lab6" class="section">
+  <h1>Midterm Task 6. Using CSS display property</h1>
+  <p>Using Display Property (Block Level, Inline-Block and Inline)</p>
+
+  <div class="lab-images-row">
+    <div class="lab-image-wrap">
+      <img src="../images/6ss.png" class="lab-image">
+      <p>Sample Code</p>
+    </div>
+    <div class="lab-image-wrap">
+      <img src="../images/googless.png" class="lab-image">
+      <p>Sample Output</p>
+    </div>
+  </div>
+
+  <button class="back-btn" onclick="backToProjects()">Back</button>
+</div>
+
+  <footer>
+    © 2026 Angela Portfolio <br>
+    <a href="mailto:analmario0631@iskwela.psau.edu.ph">analmario0631@iskwela.psau.edu.ph</a>
+    |
+    <a href="tel:+639675744933">0967-574-4933</a>
+  </footer>
+
+</div>
+
+<script>
+function showSection(id, element) {
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.classList.remove('active');
+    sec.style.overflowY = 'hidden';
+  });
+
+  const sec = document.getElementById(id);
+  sec.classList.add('active');
+
+  
+  if(id === 'home' || id === 'about'  || id === 'about') {
+    sec.style.overflowY = 'auto';
+  }
+
+  document.querySelectorAll('.nav1 li').forEach(li => li.classList.remove('active'));
+  element.classList.add('active');
+}
+
+function showProject(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function backToProjects() {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById('projects').classList.add('active');
+}
+
+document.querySelectorAll('.labimage').forEach(img => {
+  img.addEventListener('click', () => {
+    img.classList.toggle('enlarged');
+  });
+});
+
+document.querySelectorAll('.lab-image').forEach(img => {
+  img.addEventListener('click', () => {
+    img.classList.toggle('enlarged'); 
+  });
+});
+
+</script>
+
+</body>
+</html>
